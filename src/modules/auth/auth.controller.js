@@ -7,8 +7,30 @@ class AuthController {
     autoBind(this);
     this.#service = AuthService;
   }
-  async sendOtp(mobile) {}
-  async sendOtp(mobile, codes) {}
+  async sendOtpController(req, res, next) {
+    try {
+      const mobile = req.body;
+      const result = await this.#service.sendOtp(mobile);
+      return res.json({
+        error: null,
+        result,
+      });
+    } catch (error) {
+      if (error) next(error);
+    }
+  }
+  async sendOtpController(req, res, next) {
+    try {
+      const { mobile, code } = req.body;
+      const result = await this.#service.checkOtp(mobile, code);
+      return {
+        error: null,
+        result,
+      };
+    } catch (error) {
+      if (error) next(error);
+    }
+  }
 }
 
 module.exports = new AuthController();
