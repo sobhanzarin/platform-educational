@@ -9,24 +9,25 @@ class AuthController {
   }
   async sendOtpController(req, res, next) {
     try {
-      const mobile = req.body;
+      console.log(req.body);
+      const { mobile } = req.body;
       const result = await this.#service.sendOtp(mobile);
       return res.json({
         error: null,
-        result,
+        data: result,
       });
     } catch (error) {
       if (error) next(error);
     }
   }
-  async sendOtpController(req, res, next) {
+  async checkOtpController(req, res, next) {
     try {
       const { mobile, code } = req.body;
       const result = await this.#service.checkOtp(mobile, code);
-      return {
+      return res.json({
         error: null,
-        result,
-      };
+        data: result,
+      });
     } catch (error) {
       if (error) next(error);
     }

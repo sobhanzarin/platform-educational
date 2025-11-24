@@ -24,7 +24,7 @@ Episode.belongsTo(Chapter, {
 });
 
 const syncModels = async () => {
-  await sequelize.sync({ force: true });
+  await sequelize.sync({ alter: true });
 };
 
 module.exports = {

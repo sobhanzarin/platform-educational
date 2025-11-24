@@ -13,6 +13,7 @@ User.init(
     otp_code: { type: DataTypes.STRING },
     otp_expires: { type: DataTypes.DATE },
     wrong_count: { type: DataTypes.INTEGER, defaultValue: 0 },
+    ban_until: { type: DataTypes.DATE, allowNull: true },
     status: {
       type: DataTypes.ENUM("active", "ban", "pending"),
       defaultValue: "pending",
