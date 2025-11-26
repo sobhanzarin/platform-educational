@@ -1,4 +1,4 @@
-const authMessage = {
+const courseMessage = {
   loginAgain: "وارد حساب کاربری خود شوید.",
   SendOtpSuccessfullt: "کد ارسال شد.",
   accountBanned: "شمار بیش از 3 بار تلاش کردیدو دقایقی بعد دوباره تلاش بکنید.",
@@ -11,4 +11,4 @@ const authMessage = {
   logout: "با موفقیت از سیستم خارج شدید",
 };
 
-module.exports = authMessage;
+module.exports = courseMessage;

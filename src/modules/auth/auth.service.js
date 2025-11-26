@@ -35,7 +35,6 @@ class AuthService {
   async checkOtp(mobile, otp) {
     const now = new Date();
     const user = await this.checkExistUser(mobile);
-    console.log(now);
 
     if (user.ban_until && user.ban_until > now) {
       throw createHttpError.Unauthorized(authMessage.accountIsBan);
@@ -79,7 +78,12 @@ class AuthService {
 
   async checkExistUser(mobile) {
     const user = await this.#userModel.findOne({ where: { mobile } });
-    if (!user) throw new createHttpError.NotFound(authMessage.NotFound);
+    if (!user) throw createHttpError.NotFound(authMessage.NotFound);
+    return user;
+  }
+  async checkExistUserById(userId) {
+    const user = await this.#userModel.findByPk(userId);
+    if (!user) throw createHttpError.Unauthorized(authMessage.NotFound);
     return user;
   }
 }

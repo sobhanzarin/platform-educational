@@ -9,6 +9,10 @@ Chapter.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    courseId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     order: {
       type: DataTypes.INTEGER,
       defaultValue: 0,
