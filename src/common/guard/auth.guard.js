@@ -26,9 +26,11 @@ const Authorization = async (req, res, next) => {
         avatar: user?.avatar,
         wallet_balance: user?.wallet_balance,
         status: user?.status,
+        rol: user?.rol,
       };
       return next();
     }
+    throw createHttpError.Unauthorized("لطفا اول وارد شوید.");
   } catch (error) {
     return next(error);
   }

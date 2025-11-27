@@ -14,6 +14,10 @@ User.init(
     otp_expires: { type: DataTypes.DATE },
     wrong_count: { type: DataTypes.INTEGER, defaultValue: 0 },
     ban_until: { type: DataTypes.DATE, allowNull: true },
+    rol: {
+      type: DataTypes.ENUM("user", "teacher", "admin", "support"),
+      defaultValue: "user",
+    },
     status: {
       type: DataTypes.ENUM("active", "ban", "pending"),
       defaultValue: "pending",

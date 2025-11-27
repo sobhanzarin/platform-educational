@@ -5,9 +5,9 @@ const courseMessage = require("./course.message");
 const { Charsets } = require("mysql2");
 const chapterModel = require("../../model/chapter.model");
 const episodeModel = require("../../model/episode.model");
-const { Model, where } = require("sequelize");
 const Chapter = require("../../model/chapter.model");
 const Episode = require("../../model/episode.model");
+const User = require("../../model/user.model");
 
 class CourseService {
   #courseModel;
@@ -20,8 +20,16 @@ class CourseService {
     this.#episodeModel = episodeModel;
   }
   async createCourse(data) {
-    const { title, summary, image, duration, support, content, chapters } =
-      data;
+    const {
+      title,
+      summary,
+      image,
+      duration,
+      support,
+      content,
+      chapters,
+      teacherId,
+    } = data;
     let course = await this.#courseModel.create({
       title,
       summary,
@@ -29,6 +37,7 @@ class CourseService {
       duration,
       support,
       content,
+      teacherId,
     });
     let chapterIndex = 1;
     if (Array.isArray(chapters)) {
@@ -63,6 +72,13 @@ class CourseService {
     const courses = await this.#courseModel.findAll({
       where: {},
       attributes: ["id", "title", "duration", "content"],
+      include: [
+        {
+          model: User,
+          as: "teacher",
+          attributes: ["id", "mobile", "firstname", "lastname", "rol"],
+        },
+      ],
     });
     return {
       courses,
