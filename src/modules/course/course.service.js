@@ -2,11 +2,8 @@ const { default: autoBind } = require("auto-bind");
 const courseModel = require("../../model/course.model");
 const createHttpError = require("http-errors");
 const courseMessage = require("./course.message");
-const { Charsets } = require("mysql2");
 const chapterModel = require("../../model/chapter.model");
 const episodeModel = require("../../model/episode.model");
-const Chapter = require("../../model/chapter.model");
-const Episode = require("../../model/episode.model");
 const User = require("../../model/user.model");
 
 class CourseService {

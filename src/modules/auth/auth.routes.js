@@ -12,5 +12,5 @@ router.get("/whoami", Authorization, (req, res) => {
 });
 
 module.exports = {
-  authRoutes: router,
+  authRouter: router,
 };

@@ -14,5 +14,5 @@ router.get("/:id", CourseController.findOneByIdCourseHandel);
 router.delete("/:id", CourseController.deleteCourseHandel);
 
 module.exports = {
-  courseRotes: router,
+  courseRoter: router,
 };
