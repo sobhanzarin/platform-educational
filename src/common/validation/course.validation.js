@@ -1,7 +1,7 @@
 const { body } = require("express-validator");
 
 const createCourseValidator = [
-  body("titel").notEmpty().withMessage("عنوان اجباری می باشد."),
+  body("title").notEmpty().withMessage("عنوان اجباری می باشد."),
   body("summary").notEmpty().withMessage("خلاصه دوره اجباری می باشد."),
   body("image").isURL().withMessage("آدرس تصویر باید معتبر باشد."),
   body("duration").notEmpty().withMessage("مدت دوره اجباری می باشد."),

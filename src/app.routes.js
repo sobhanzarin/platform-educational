@@ -7,6 +7,7 @@ router.get("/", (req, res, next) => {
   res.send("OK");
 });
 router.use("/v1/api/auth", authRoutes);
+router.use("/v1/api/course", courseRotes);
 
 // routes corse api
 module.exports = {

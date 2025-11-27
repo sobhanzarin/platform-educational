@@ -16,11 +16,13 @@ Chapter.belongsTo(Course, {
 Chapter.hasMany(Episode, {
   foreignKey: "chapterId",
   as: "episodes",
+  onDelete: "CASCADE",
 });
 
 Episode.belongsTo(Chapter, {
   foreignKey: "chapterId",
   as: "chapter",
+  onDelete: "CASCADE",
 });
 
 const syncModels = async () => {

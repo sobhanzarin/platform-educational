@@ -1,15 +1,14 @@
 const { default: autoBind } = require("auto-bind");
-const CourseService = require("./course.routes");
+const CourseService = require("./course.service");
 
 class CourseController {
   #service;
   constructor() {
     autoBind(this);
     this.#service = CourseService;
-    s;
   }
-  async createCourseController(req, res, next) {
-    const { title, summary, image, duration, support, content, chspters } =
+  async createCourseHandel(req, res, next) {
+    const { title, summary, image, duration, support, content, chapters } =
       req.body;
     const data = {
       title,
@@ -18,16 +17,38 @@ class CourseController {
       duration,
       support,
       content,
-      chspters,
+      chapters,
     };
     const result = await this.#service.createCourse(data);
-    return res.jaon({
+    return res.json({
       error: null,
       data: result,
     });
   }
-  async updateCourseController(req, res, next) {}
-  async findAllCourseController(req, res, next) {}
-  async findOneByIdCourseController(req, res, next) {}
-  async deleteCourseController(req, res, next) {}
+  async findAllCourseHandel(req, res, next) {
+    const result = await this.#service.findAllCourse();
+    return res.json({
+      error: null,
+      data: result,
+    });
+  }
+  async findOneByIdCourseHandel(req, res, next) {
+    const { id } = req.params;
+    const result = await this.#service.findOneByIdCourse(id);
+    return res.json({
+      error: null,
+      data: result,
+    });
+  }
+  async deleteCourseHandel(req, res, next) {
+    const { id } = req.params;
+    const result = await this.#service.deleteCourse(id);
+    return res.json({
+      error: null,
+      data: result,
+    });
+  }
+  async updateCourseHandel(req, res, next) {}
 }
+
+module.exports = new CourseController();
